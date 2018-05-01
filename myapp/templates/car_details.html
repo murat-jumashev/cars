@@ -10,9 +10,19 @@
     <div>
         {{ c }}
         {{ c.year}}
-        <a href="{% url 'myapp:car_edit' pk=c.pk %}">
-            <button>Edit</button>
-        </a>
+        <div style="display: flex;">
+            <div>
+                <a href="{% url 'myapp:car_edit' pk=c.pk %}">
+                    <button>Edit</button>
+                </a>
+            </div>
+            <div>
+                <form action="{% url "myapp:car_delete" pk=c.pk %}" method='POST'>
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>
